@@ -15,6 +15,9 @@ const elementosNecesarios = [
   document.querySelector('#balance-equipo'),
   document.querySelector('#derrotas-equipo'),
   document.querySelector('#posicion-equipo'),
+  document.querySelector('#escudo-cabecera'),
+  document.querySelector('#escudo-local-ultimo'),
+  document.querySelector('#escudo-visitante-ultimo'),
   document.querySelector('#marcador-ultimo-partido'),
   document.querySelector('#detalle-ultimo-partido'),
   document.querySelector('#rival-siguiente'),
@@ -45,6 +48,45 @@ function formatearFecha(fecha, incluirHora = false) {
 function establecerTexto(selector, texto) {
   const elemento = document.querySelector(selector)
   elemento.textContent = texto
+}
+
+function establecerEscudo(selector, equipo) {
+  const imagen = document.querySelector(selector)
+  const url = equipo?.escudo
+
+  if (!url) {
+    imagen.removeAttribute('src')
+    imagen.alt = ''
+    imagen.hidden = true
+    return
+  }
+
+  let direccion
+
+  try {
+    direccion = new URL(url)
+  } catch {
+    imagen.removeAttribute('src')
+    imagen.alt = ''
+    imagen.hidden = true
+    return
+  }
+
+  if (direccion.protocol !== 'https:') {
+    imagen.removeAttribute('src')
+    imagen.alt = ''
+    imagen.hidden = true
+    return
+  }
+
+  imagen.alt = `Escudo de ${equipo.nombre}`
+  imagen.hidden = false
+  imagen.onerror = () => {
+    imagen.removeAttribute('src')
+    imagen.alt = ''
+    imagen.hidden = true
+  }
+  imagen.src = direccion.href
 }
 
 function mostrarMarcador(local, visitante) {
@@ -142,6 +184,9 @@ function mostrarResumen({ temporada, clasificacion, partidos }) {
   }
 
   const partidosMadridDisputados = obtenerPartidosDisputadosDelMadrid(partidos)
+  const partidoConEscudoMadrid = partidos.find((partido) => (
+    partido.local.codigo === 'MAD' || partido.visitante.codigo === 'MAD'
+  ))
   const fechaActual = Date.now()
   const ultimoPartido = partidosMadridDisputados[0]
   const proximosPartidos = partidos
@@ -157,14 +202,24 @@ function mostrarResumen({ temporada, clasificacion, partidos }) {
   establecerTexto('#balance-equipo', equipoMadrid.victorias)
   establecerTexto('#derrotas-equipo', equipoMadrid.derrotas)
   establecerTexto('#posicion-equipo', equipoMadrid.posicion)
+  establecerEscudo(
+    '#escudo-cabecera',
+    partidoConEscudoMadrid?.local.codigo === 'MAD'
+      ? partidoConEscudoMadrid.local
+      : partidoConEscudoMadrid?.visitante,
+  )
 
   if (ultimoPartido) {
+    establecerEscudo('#escudo-local-ultimo', ultimoPartido.local)
+    establecerEscudo('#escudo-visitante-ultimo', ultimoPartido.visitante)
     mostrarMarcador(ultimoPartido.local.puntos, ultimoPartido.visitante.puntos)
     establecerTexto(
       '#detalle-ultimo-partido',
       `${ultimoPartido.local.nombre} · ${ultimoPartido.visitante.nombre} · ${formatearFecha(ultimoPartido.fecha)}`,
     )
   } else {
+    establecerEscudo('#escudo-local-ultimo', null)
+    establecerEscudo('#escudo-visitante-ultimo', null)
     mostrarMarcador('—', '—')
     establecerTexto('#detalle-ultimo-partido', 'Todavía no hay partidos disputados')
   }

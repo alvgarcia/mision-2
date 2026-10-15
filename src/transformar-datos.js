@@ -77,11 +77,13 @@ export function normalizarPartidos(partidos) {
       local: {
         codigo: obtenerTexto(clubLocal.code, 'el código del equipo local'),
         nombre: obtenerTexto(clubLocal.name, 'el nombre del equipo local'),
+        escudo: typeof clubLocal.images?.crest === 'string' ? clubLocal.images.crest : '',
         puntos: datosPartido.played ? obtenerNumero(equipoLocal.score, 'el resultado del equipo local') : null,
       },
       visitante: {
         codigo: obtenerTexto(clubVisitante.code, 'el código del equipo visitante'),
         nombre: obtenerTexto(clubVisitante.name, 'el nombre del equipo visitante'),
+        escudo: typeof clubVisitante.images?.crest === 'string' ? clubVisitante.images.crest : '',
         puntos: datosPartido.played ? obtenerNumero(equipoVisitante.score, 'el resultado del equipo visitante') : null,
       },
     }

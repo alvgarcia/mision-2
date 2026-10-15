@@ -13,7 +13,9 @@
       <!-- Cabecera de marca; la aplicación se mantiene en una única pantalla. -->
       <header class="encabezado-sitio">
         <div class="marca">
-          <span class="espacio-escudo escudo-cabecera"></span>
+          <span class="espacio-escudo escudo-cabecera">
+            <img id="escudo-cabecera" class="imagen-escudo" alt="" hidden />
+          </span>
           <span class="nombre-marca">REAL MADRID<span> BALONCESTO</span></span>
         </div>
       </header>
@@ -55,9 +57,13 @@
               <span class="etiqueta-tarjeta">ÚLTIMO PARTIDO</span>
             </div>
             <div class="marcador-partido">
-              <span id="escudo-local-ultimo" class="espacio-escudo escudo-partido" aria-hidden="true"></span>
+              <span class="espacio-escudo escudo-partido">
+                <img id="escudo-local-ultimo" class="imagen-escudo" alt="" hidden />
+              </span>
               <span id="marcador-ultimo-partido" class="marcador-resultado">— <span>:</span> —</span>
-              <span id="escudo-visitante-ultimo" class="espacio-escudo escudo-partido" aria-hidden="true"></span>
+              <span class="espacio-escudo escudo-partido">
+                <img id="escudo-visitante-ultimo" class="imagen-escudo" alt="" hidden />
+              </span>
             </div>
             <p id="detalle-ultimo-partido" class="descripcion-metrica">Esperando los datos del partido</p>
           </article>
