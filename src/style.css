@@ -338,31 +338,116 @@ h2 {
   font-size: 11px;
 }
 
-.tabla-clasificacion .fila-provisional td {
-  height: 138px;
-  text-align: center;
-  white-space: normal;
+.tabla-clasificacion tbody tr {
+  border-bottom: 1px solid #f0f1f5;
 }
 
-.tabla-clasificacion .fila-provisional td,
-.partidos-vacios p {
-  color: #9ba2b0;
-  font-size: 11px;
-  font-weight: 400;
+.tabla-clasificacion tbody tr:last-child {
+  border-bottom: 0;
 }
 
-.partidos-vacios {
-  min-height: 190px;
+.tabla-clasificacion .fila-real-madrid {
+  background: #f1f4fa;
+}
+
+.tabla-clasificacion .fila-real-madrid td {
+  color: var(--azul);
+  font-weight: 700;
+}
+
+.tabla-clasificacion .fila-real-madrid td:first-child {
+  box-shadow: inset 3px 0 0 var(--azul);
+}
+
+.lista-partidos {
+  margin-top: 14px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
 }
 
-.partidos-vacios > span:last-child {
+.fila-partido {
+  min-width: 0;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-bottom: 1px solid #f0f1f5;
+}
+
+.fila-partido:last-child {
+  border-bottom: 0;
+}
+
+.detalles-partido {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  align-items: baseline;
+  column-gap: 8px;
+  row-gap: 3px;
+}
+
+.jornada-partido,
+.sede-partido {
+  color: #8991a2;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.sede-partido {
+  color: var(--azul);
+}
+
+.rival-partido {
+  overflow: hidden;
+  margin: 0;
+  color: #59647a;
+  font-size: 11px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fecha-partido {
+  grid-column: 3;
   color: #9aa1af;
   font-size: 9px;
+}
+
+.resultado-partido {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.marcador-lista {
+  color: var(--texto-principal);
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.estado-partido {
+  width: 19px;
+  height: 19px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.estado-partido.victoria {
+  background: #e8f4ee;
+  color: #408b68;
+}
+
+.estado-partido.derrota {
+  background: #f8eaea;
+  color: #b75f62;
 }
 
 a:focus-visible {
