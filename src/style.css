@@ -1,296 +1,479 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+/* Tipografía, paleta y valores generales de la página. */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
-
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
-
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
+  font-family: 'DM Sans', 'Segoe UI', sans-serif;
+  color: #1b2438;
+  background: #f5f6fa;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
-  }
+  --texto-principal: #1b2438;
+  --borde-suave: #e9ebf1;
+  --azul: #30477d;
+  --azul-oscuro: #263b6c;
+  --superficie: #fff;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html {
+  min-width: 320px;
 }
 
 body {
+  min-width: 320px;
   margin: 0;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Alineación compartida por la cabecera y la bienvenida. */
+.encabezado-sitio,
+.fila-bienvenida {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Cabecera con la marca del equipo y la competición. */
+.encabezado-sitio {
+  height: 78px;
+  padding: 0 max(5.5vw, calc((100vw - 1280px) / 2));
+  background: var(--superficie);
+  border-bottom: 1px solid #eceef3;
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.espacio-escudo {
+  display: block;
+  flex: 0 0 auto;
+}
+
+.escudo-cabecera {
+  width: 39px;
+  height: 39px;
+}
+
+.nombre-marca {
+  font-family: 'Manrope', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  color: var(--azul-oscuro);
+}
+
+.nombre-marca span {
+  font-weight: 500;
+  color: #69738a;
+}
+
+/* Presentación del título y resumen principal de la temporada. */
+.contenedor-pagina {
+  width: min(1280px, 89%);
+  margin: 0 auto;
+}
+
+.fila-bienvenida {
+  min-height: 204px;
+}
+
+.texto-auxiliar {
+  margin: 0 0 11px;
+  color: #8a92a3;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.65px;
+}
+
+.separador-auxiliar {
+  padding: 0 5px;
+  color: #c1c6d0;
+}
+
+h1,
+h2,
+p {
+  margin-top: 0;
 }
 
 h1,
 h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+  font-family: 'Manrope', 'Segoe UI', sans-serif;
 }
 
 h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
-  }
-}
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
+  margin-bottom: 6px;
+  color: var(--texto-principal);
+  font-size: clamp(29px, 3.2vw, 40px);
+  font-weight: 700;
+  letter-spacing: -1.8px;
+  line-height: 1.2;
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+.acento-titulo {
+  color: var(--azul);
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+.texto-bienvenida {
+  margin-bottom: 0;
+  color: #7e8799;
+  font-size: 13px;
 }
 
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* Tarjetas con el balance, la posición y los partidos destacados. */
+.cuadricula-resumen {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 15px;
 }
 
-.hero {
+.tarjeta-resumen,
+.panel {
+  border: 1px solid #e9ebf1;
+  border-radius: 8px;
+  background: var(--superficie);
+  box-shadow: 0 3px 14px rgba(35, 47, 77, 0.025);
+}
+
+.tarjeta-resumen {
   position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+  min-height: 169px;
+  overflow: hidden;
+  padding: 19px 20px;
 }
 
-#app {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
+.etiqueta-tarjeta {
+  color: #8991a2;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.1px;
+}
+
+.valor-metrica,
+.rival-siguiente {
+  color: var(--texto-principal);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+}
+
+.valor-metrica {
+  margin: 12px 0 1px;
+  font-size: 33px;
+  letter-spacing: -1px;
+  line-height: 1.2;
+}
+
+.separador-metrica {
+  padding: 0 3px;
+  color: #c2c7d1;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.sufijo-metrica {
+  margin-left: 2px;
+  color: #8f97a7;
+  font-size: 17px;
+}
+
+.descripcion-metrica {
+  margin-bottom: 0;
+  color: #9098a8;
+  font-size: 11px;
+}
+
+.punto-separador {
+  padding: 0 4px;
+  color: #c3c8d2;
+}
+
+
+
+.encabezado-tarjeta,
+.marcador-partido {
   display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#center {
+.marcador-partido {
+  margin: 15px 0 5px;
+}
+
+.escudo-partido {
+  width: 29px;
+  height: 29px;
+}
+
+.marcador-provisional {
+  color: #7e8799;
+  font-family: 'Manrope', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.marcador-provisional span {
+  padding: 0 3px;
+  color: #c7cbd4;
+  font-size: 14px;
+}
+
+.rival-siguiente {
+  margin: 13px 0 1px;
+  font-size: 18px;
+}
+
+.datos-siguiente {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  left: 20px;
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
+  align-items: center;
   gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
+  color: #939aab;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
+.separador-meta {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #c3c8d2;
 }
 
-.ticks {
-  position: relative;
+/* Paneles de clasificación y partidos dentro del dashboard. */
+.cuadricula-contenido {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  align-items: stretch;
+  gap: 15px;
+}
+
+.panel {
+  min-width: 0;
+  min-height: 353px;
+  padding: 22px 23px 17px;
+}
+
+.encabezado-seccion {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.encabezado-seccion .texto-auxiliar {
+  margin-bottom: 5px;
+  font-size: 8px;
+}
+
+h2 {
+  margin-bottom: 0;
+  color: var(--texto-principal);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.55px;
+}
+
+.envoltorio-tabla {
+  margin-top: 22px;
+  overflow-x: auto;
+}
+
+.tabla-clasificacion {
   width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  white-space: nowrap;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
+.tabla-clasificacion th {
+  padding: 0 10px 11px;
+  border-bottom: 1px solid var(--borde-suave);
+  color: #9299a9;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.75px;
+}
+
+.tabla-clasificacion th:first-child,
+.tabla-clasificacion td:first-child {
+  padding-left: 4px;
+}
+
+.tabla-clasificacion th:nth-child(n + 3),
+.tabla-clasificacion td:nth-child(n + 3) {
+  text-align: center;
+}
+
+.tabla-clasificacion td {
+  padding: 17px 10px;
+  color: #7d8698;
+  font-size: 11px;
+}
+
+.tabla-clasificacion .fila-provisional td {
+  height: 138px;
+  text-align: center;
+  white-space: normal;
+}
+
+.tabla-clasificacion .fila-provisional td,
+.partidos-vacios p {
+  color: #9ba2b0;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.partidos-vacios {
+  min-height: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.partidos-vacios > span:last-child {
+  color: #9aa1af;
+  font-size: 9px;
+}
+
+a:focus-visible {
+  outline: 2px solid #7770d7;
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Ajustes de distribución para pantallas de distintos tamaños. */
+@media (min-width: 1500px) {
+  .encabezado-sitio {
+    padding-right: max(5.5vw, calc((100vw - 1280px) / 2));
+    padding-left: max(5.5vw, calc((100vw - 1280px) / 2));
+  }
+}
+
+/* Reduce la anchura de los paneles en tabletas y móviles. */
+@media (max-width: 900px) {
+  .encabezado-sitio {
+    padding: 0 5.5%;
   }
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+  .cuadricula-resumen {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+
+  .cuadricula-contenido {
+    grid-template-columns: 1fr;
   }
+
+  .panel {
+    min-height: 330px;
+  }
+}
+
+/* Compacta las tarjetas y los espacios en pantallas estrechas. */
+@media (max-width: 600px) {
+  .encabezado-sitio {
+    height: 66px;
+    flex-wrap: wrap;
+  }
+
+  .marca {
+    gap: 8px;
+  }
+
+  .escudo-cabecera {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nombre-marca {
+    font-size: 10px;
+  }
+
+  .contenedor-pagina {
+    width: 90%;
+  }
+
+  .fila-bienvenida {
+    min-height: 174px;
+  }
+
+  .fila-bienvenida h1 {
+    font-size: 29px;
+  }
+
+  .texto-bienvenida {
+    max-width: 270px;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  .cuadricula-resumen {
+    gap: 10px;
+  }
+
+  .tarjeta-resumen {
+    min-height: 158px;
+    padding: 16px 14px;
+  }
+
+  .etiqueta-tarjeta {
+    font-size: 8px;
+    letter-spacing: 0.7px;
+  }
+
+  .datos-siguiente {
+    right: 14px;
+    left: 14px;
+    gap: 5px;
+    font-size: 7px;
+  }
+
+  .cuadricula-contenido {
+    margin-top: 15px;
+    gap: 12px;
+  }
+
+  .panel {
+    min-height: 320px;
+    padding: 19px 16px 15px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .tabla-clasificacion th {
+    padding-right: 7px;
+    padding-left: 7px;
+    font-size: 7px;
+  }
+
 }

@@ -1,13 +1,107 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mision-2</title>
+
+    <title>Real Madrid Baloncesto | Euroliga</title>
+    <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <div id="aplicacion">
+      <!-- Cabecera de marca; la aplicación se mantiene en una única pantalla. -->
+      <header class="encabezado-sitio">
+        <div class="marca">
+          <span class="espacio-escudo escudo-cabecera"></span>
+          <span class="nombre-marca">REAL MADRID<span> BALONCESTO</span></span>
+        </div>
+      </header>
+
+      <main id="inicio" class="contenedor-pagina">
+        <!-- Resumen superior de la temporada y métricas principales del equipo. -->
+        <section class="fila-bienvenida">
+          <div>
+            <p class="texto-auxiliar">TEMPORADA 2026 / 27 <span class="separador-auxiliar">/</span> EUROLIGA</p>
+            <h1 id="titulo-pagina">El camino a la <span class="acento-titulo">gloria.</span></h1>
+            <p class="texto-bienvenida">Toda la actualidad del Real Madrid en Europa, en un solo lugar.</p>
+          </div>
+        </section>
+
+        <section class="cuadricula-resumen">
+          <!-- Valores provisionales hasta conectar las fuentes de datos. -->
+          <article class="tarjeta-resumen">
+            <div class="encabezado-tarjeta">
+              <span class="etiqueta-tarjeta">BALANCE</span>
+            </div>
+            <p class="valor-metrica">— <span class="separador-metrica">/</span> —</p>
+            <p class="descripcion-metrica">Victorias <span class="punto-separador">·</span> Derrotas</p>
+          </article>
+
+          <article class="tarjeta-resumen">
+            <div class="encabezado-tarjeta">
+              <span class="etiqueta-tarjeta">POSICIÓN EN LIGA</span>
+            </div>
+            <p class="valor-metrica">—<span class="sufijo-metrica">º</span></p>
+            <p class="descripcion-metrica">Clasificación general</p>
+          </article>
+
+          <article class="tarjeta-resumen">
+            <div class="encabezado-tarjeta">
+              <span class="etiqueta-tarjeta">ÚLTIMO PARTIDO</span>
+            </div>
+            <div class="marcador-partido">
+              <span class="espacio-escudo escudo-partido"></span>
+              <span class="marcador-provisional">— <span>:</span> —</span>
+              <span class="espacio-escudo escudo-partido"></span>
+            </div>
+            <p class="descripcion-metrica">Resultado pendiente de datos</p>
+          </article>
+
+          <article class="tarjeta-resumen">
+            <div class="encabezado-tarjeta">
+              <span class="etiqueta-tarjeta">PRÓXIMO ENCUENTRO</span>
+            </div>
+            <p class="rival-siguiente">Por confirmar</p>
+            <p class="descripcion-metrica">Fecha y sede pendientes</p>
+            <div class="datos-siguiente"><span>EUROLIGA</span><span class="separador-meta"></span><span>JORNADA —</span></div>
+          </article>
+        </section>
+
+        <div class="cuadricula-contenido">
+          <!-- Vistas resumidas integradas en el panel de control, sin páginas independientes. -->
+          <section id="clasificacion" class="panel">
+            <div class="encabezado-seccion">
+              <div>
+                <p class="texto-auxiliar">LA CARRERA EUROPEA</p>
+                <h2 id="titulo-clasificacion">Clasificación</h2>
+              </div>
+            </div>
+            <div class="envoltorio-tabla">
+              <table class="tabla-clasificacion">
+                <thead>
+                  <tr><th scope="col">#</th><th scope="col">EQUIPO</th><th scope="col">PJ</th><th scope="col">V</th><th scope="col">D</th><th scope="col">+/−</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="fila-provisional"><td colspan="6">La clasificación aparecerá aquí</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <section id="partidos" class="panel">
+            <div class="encabezado-seccion">
+              <div>
+                <p class="texto-auxiliar">RESULTADOS RECIENTES</p>
+                <h2 id="titulo-partidos">Últimos 5 partidos</h2>
+              </div>
+            </div>
+            <div class="partidos-vacios">
+              <p class="descripcion-metrica">Los últimos 5 partidos disputados aparecerán aquí</p>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
   </body>
 </html>
