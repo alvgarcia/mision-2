@@ -22,19 +22,23 @@
         <!-- Resumen superior de la temporada y métricas principales del equipo. -->
         <section class="fila-bienvenida">
           <div>
-            <p class="texto-auxiliar">TEMPORADA 2026 / 27 <span class="separador-auxiliar">/</span> EUROLIGA</p>
+            <p class="texto-auxiliar">TEMPORADA <span id="temporada-actual">—</span> <span class="separador-auxiliar">/</span> EUROLIGA</p>
             <h1 id="titulo-pagina">El camino a la <span class="acento-titulo">gloria.</span></h1>
             <p class="texto-bienvenida">Toda la actualidad del Real Madrid en Europa, en un solo lugar.</p>
           </div>
         </section>
 
+        <div class="estado-datos" aria-live="polite">
+          <p id="mensaje-datos" class="mensaje-datos" role="status">Cargando datos de EuroLeague...</p>
+          <button id="reintentar-carga" class="boton-reintento" type="button" hidden>Reintentar</button>
+        </div>
+
         <section class="cuadricula-resumen">
-          <!-- Datos de ejemplo; se sustituirán por la respuesta de la API. -->
           <article class="tarjeta-resumen">
             <div class="encabezado-tarjeta">
               <span class="etiqueta-tarjeta">BALANCE</span>
             </div>
-            <p class="valor-metrica">2 <span class="separador-metrica">/</span> 3</p>
+            <p class="valor-metrica"><span id="balance-equipo">—</span> <span class="separador-metrica">/</span> <span id="derrotas-equipo">—</span></p>
             <p class="descripcion-metrica">Victorias <span class="punto-separador">·</span> Derrotas</p>
           </article>
 
@@ -42,7 +46,7 @@
             <div class="encabezado-tarjeta">
               <span class="etiqueta-tarjeta">POSICIÓN EN LIGA</span>
             </div>
-            <p class="valor-metrica">11<sup class="sufijo-metrica">º</sup></p>
+            <p class="valor-metrica"><span id="posicion-equipo">—</span><sup class="sufijo-metrica">º</sup></p>
             <p class="descripcion-metrica">Clasificación general</p>
           </article>
 
@@ -51,20 +55,20 @@
               <span class="etiqueta-tarjeta">ÚLTIMO PARTIDO</span>
             </div>
             <div class="marcador-partido">
-              <span class="espacio-escudo escudo-partido"></span>
-              <span class="marcador-resultado">98 <span>:</span> 89</span>
-              <span class="espacio-escudo escudo-partido"></span>
+              <span id="escudo-local-ultimo" class="espacio-escudo escudo-partido" aria-hidden="true"></span>
+              <span id="marcador-ultimo-partido" class="marcador-resultado">— <span>:</span> —</span>
+              <span id="escudo-visitante-ultimo" class="espacio-escudo escudo-partido" aria-hidden="true"></span>
             </div>
-            <p class="descripcion-metrica">Real Madrid · Milan · 13 oct</p>
+            <p id="detalle-ultimo-partido" class="descripcion-metrica">Esperando los datos del partido</p>
           </article>
 
           <article class="tarjeta-resumen">
             <div class="encabezado-tarjeta">
               <span class="etiqueta-tarjeta">PRÓXIMO ENCUENTRO</span>
             </div>
-            <p class="rival-siguiente">LDLC ASVEL</p>
-            <p class="descripcion-metrica">15 oct · 21:00 · Movistar Arena</p>
-            <div class="datos-siguiente"><span>EUROLIGA</span><span class="separador-meta"></span><span>JORNADA 6</span></div>
+            <p id="rival-siguiente" class="rival-siguiente">Por confirmar</p>
+            <p id="detalle-siguiente" class="descripcion-metrica">Esperando el calendario</p>
+            <div class="datos-siguiente"><span>EUROLIGA</span><span class="separador-meta"></span><span id="jornada-siguiente">JORNADA —</span></div>
           </article>
         </section>
 
@@ -73,7 +77,7 @@
           <section id="clasificacion" class="panel">
             <div class="encabezado-seccion">
               <div>
-                <p class="texto-auxiliar">JORNADA 5 · DATOS DE EJEMPLO</p>
+                <p id="jornada-clasificacion" class="texto-auxiliar">CLASIFICACIÓN ACTUAL</p>
                 <h2 id="titulo-clasificacion">Clasificación</h2>
               </div>
             </div>

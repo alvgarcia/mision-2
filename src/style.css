@@ -140,6 +140,48 @@ h1 {
   font-size: 13px;
 }
 
+.estado-datos {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: -17px 0 13px;
+}
+
+.mensaje-datos {
+  margin: 0;
+  color: #7e8799;
+  font-size: 11px;
+}
+
+.mensaje-datos.mensaje-error {
+  color: #a44249;
+}
+
+.boton-reintento {
+  padding: 5px 10px;
+  border: 1px solid #d8ddea;
+  border-radius: 4px;
+  background: var(--superficie);
+  color: var(--azul);
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.boton-reintento:hover {
+  border-color: var(--azul);
+}
+
+.boton-reintento:focus-visible {
+  outline: 2px solid #7770d7;
+  outline-offset: 2px;
+}
+
+.boton-reintento[hidden],
+.mensaje-datos[hidden] {
+  display: none;
+}
+
 /* Tarjetas con el balance, la posición y los partidos destacados. */
 .cuadricula-resumen {
   display: grid;
@@ -363,6 +405,13 @@ h2 {
   margin-top: 14px;
   display: flex;
   flex-direction: column;
+}
+
+.mensaje-vacio {
+  margin: 0;
+  padding: 12px 0;
+  color: #8991a2;
+  font-size: 11px;
 }
 
 .fila-partido {
